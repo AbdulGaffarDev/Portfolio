@@ -3,7 +3,7 @@ import Button from "../ui/Button";
 import { FaCode, FaGithub, FaLinkedin, FaDownload } from "react-icons/fa";
 import { HiArrowDown } from "react-icons/hi";
 
-const typewriterTexts = [
+const loopingTexts = [
   "Frontend Developer",
   "Backend Developer", 
   "Full Stack Developer",
@@ -11,36 +11,15 @@ const typewriterTexts = [
 ];
 
 const Hero = () => {
-  const [displayText, setDisplayText] = useState("");
-  const [textIndex, setTextIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
   useEffect(() => {
-    const currentText = typewriterTexts[textIndex];
-    
-    if (!isDeleting && charIndex < currentText.length) {
-      const timeout = setTimeout(() => {
-        setDisplayText((prev) => prev + currentText.charAt(charIndex));
-        setCharIndex(charIndex + 1);
-      }, 100);
-      return () => clearTimeout(timeout);
-    } else if (isDeleting && charIndex > 0) {
-      const timeout = setTimeout(() => {
-        setDisplayText((prev) => prev.slice(0, -1));
-        setCharIndex(charIndex - 1);
-      }, 50);
-      return () => clearTimeout(timeout);
-    } else if (!isDeleting && charIndex === currentText.length) {
-      const timeout = setTimeout(() => {
-        setIsDeleting(true);
-      }, 2000);
-      return () => clearTimeout(timeout);
-    } else if (isDeleting && charIndex === 0) {
-      setIsDeleting(false);
-      setTextIndex((textIndex + 1) % typewriterTexts.length);
-    }
-  }, [charIndex, textIndex, isDeleting]);
+    const interval = setInterval(() => {
+      setCurrentTextIndex((prevIndex) => (prevIndex + 1) % loopingTexts.length);
+    }, 8000); 
+
+    return () => clearInterval(interval);
+  }, []);
 
   const scrollToSection = (sectionId) => {
     const element = document.querySelector(sectionId);
@@ -71,9 +50,13 @@ const Hero = () => {
               <h1 className="text-5xl lg:text-6xl font-bold text-indigo-600 dark:text-indigo-400" style={{zIndex: 20, position: 'relative'}}>
                 Abdul Gaffar
               </h1>
-              <div className="text-2xl lg:text-3xl font-semibold min-h-[2.5rem] text-orange-600 dark:text-orange-400" style={{zIndex: 20, position: 'relative'}}>
-                {displayText}
-                <span className="blinking-cursor text-indigo-600 dark:text-indigo-400">|</span>
+              <div className="text-2xl lg:text-3xl font-semibold min-h-[2.5rem] flex items-center" style={{zIndex: 20, position: 'relative'}}>
+                <span 
+                  key={currentTextIndex}
+                  className="looping-text"
+                >
+                  {loopingTexts[currentTextIndex]}
+                </span>
               </div>
             </div>
             
