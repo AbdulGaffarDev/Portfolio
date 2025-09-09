@@ -13,8 +13,6 @@ import {
   SiRedux,
   SiMongodb,
   SiExpress,
-  SiVite,
-  SiFirebase,
   SiPostman,
   SiNextdotjs,
   SiTypescript,
@@ -47,7 +45,7 @@ const technicalSkills = [
     level: "Advanced",
   },
   {
-    title: "Redux",
+    title: "Redux Toolkit",
     icon: <SiRedux />,
     color: "#764ABC",
     level: "Intermediate",
@@ -121,8 +119,8 @@ const technicalSkills = [
 ];
 
 const softSkills = [
-  { title: "Problem Solving", value: 85, color: "bg-gradient-primary" },
-  { title: "Communication", value: 87, color: "bg-gradient-secondary" },
+  { title: "Problem Solving", value: 81, color: "bg-gradient-primary" },
+  { title: "Communication", value: 83, color: "bg-gradient-secondary" },
   { title: "Team Collaboration", value: 80, color: "bg-gradient-accent" },
   { title: "Time Management", value: 90, color: "bg-gradient-primary" },
   { title: "Adaptability", value: 84, color: "bg-gradient-secondary" },
@@ -236,7 +234,7 @@ const Skills = () => {
                 <div className="text-sm text-muted">Technologies</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">85%</div>
+                <div className="text-3xl font-bold text-primary mb-2">80%</div>
                 <div className="text-sm text-muted">Average Skill Level</div>
               </div>
               <div className="text-center">

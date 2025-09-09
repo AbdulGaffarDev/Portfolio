@@ -8,10 +8,9 @@ import {
 import {
   FaLinkedinIn,
   FaGithub,
-  FaTwitter,
   FaWhatsapp,
-  FaTelegram,
 } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -41,7 +40,7 @@ const Contact = () => {
       icon: <MdEmail className="w-6 h-6" />,
       title: "Email",
       value: "a.gaffar.dev@gmail.com",
-      link: "mailto:a.gaffar.dev@gmail.com",
+      link: "mailto:a.gaffar.dev@gmail.com?subject=Portfolio%20Inquiry&body=Hi%20Gaffar,",
       color: "text-blue-500",
     },
     {
@@ -55,7 +54,7 @@ const Contact = () => {
       icon: <MdLocationOn className="w-6 h-6" />,
       title: "Location",
       value: "Islamabad, Pakistan",
-      link: "#",
+      link: "https://www.google.com/maps/place/Islamabad,+Pakistan",
       color: "text-red-500",
     },
   ];
@@ -64,21 +63,21 @@ const Contact = () => {
     {
       icon: <FaLinkedinIn className="w-5 h-5" />,
       name: "LinkedIn",
-      url: "https://www.linkedin.com/in/abdul-gaffar/",
+      url: "https://www.linkedin.com/in/abdul-gaffar-dev/",
       color: "hover:text-blue-600",
       bgColor: "bg-blue-100 dark:bg-blue-900/20",
     },
     {
       icon: <FaGithub className="w-5 h-5" />,
       name: "GitHub",
-      url: "https://github.com/abdulgaffar",
+      url: "https://github.com/AbdulGaffarDev",
       color: "hover:text-gray-800 dark:hover:text-gray-200",
       bgColor: "bg-gray-100 dark:bg-gray-800",
     },
     {
-      icon: <FaTwitter className="w-5 h-5" />,
-      name: "Twitter",
-      url: "https://twitter.com/abdulgaffar",
+      icon: <FaXTwitter className="w-5 h-5" />,
+      name: "X (Twitter)",
+      url: "https://x.com/AbdulGaffa92758",
       color: "hover:text-blue-400",
       bgColor: "bg-blue-100 dark:bg-blue-900/20",
     },
@@ -88,13 +87,6 @@ const Contact = () => {
       url: "https://wa.me/923034895728",
       color: "hover:text-green-500",
       bgColor: "bg-green-100 dark:bg-green-900/20",
-    },
-    {
-      icon: <FaTelegram className="w-5 h-5" />,
-      name: "Telegram",
-      url: "https://t.me/abdulgaffar",
-      color: "hover:text-blue-500",
-      bgColor: "bg-blue-100 dark:bg-blue-900/20",
     },
   ];
 
@@ -209,6 +201,8 @@ const Contact = () => {
                   <a
                     key={index}
                     href={info.link}
+                    target={info.link.startsWith("mailto:") ? "_self" : "_blank"} 
+                    rel={info.link.startsWith("mailto:") ? undefined : "noopener noreferrer"}
                     className="flex items-center space-x-4 p-4 bg-main border border-base rounded-lg hover:border-primary transition-all duration-300 group cursor-pointer"
                   >
                     <div className={`p-3 rounded-full bg-primary/10 ${info.color} group-hover:scale-110 transition-transform duration-300`}>
@@ -249,8 +243,8 @@ const Contact = () => {
             <div className="bg-gradient-primary rounded-2xl p-8 text-white">
               <h3 className="text-2xl font-bold mb-4">Quick Response</h3>
               <p className="text-white/90 leading-relaxed mb-6">
-                I typically respond to messages within 24 hours. For urgent inquiries, 
-                feel free to reach out via WhatsApp or Telegram.
+                I typically respond to messages within 12 hours. For urgent inquiries, 
+                feel free to reach out via WhatsApp.
               </p>
               <div className="flex space-x-4">
                 <a
@@ -262,15 +256,6 @@ const Contact = () => {
                   <FaWhatsapp className="w-5 h-5" />
                   <span>WhatsApp</span>
               </a>
-              <a
-                  href="https://t.me/abdulgaffar"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg hover:bg-white/30 transition-colors duration-300 cursor-pointer"
-                >
-                  <FaTelegram className="w-5 h-5" />
-                  <span>Telegram</span>
-                </a>
               </div>
             </div>
           </div>

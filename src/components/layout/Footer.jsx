@@ -1,6 +1,5 @@
-import { FaGithub, FaLinkedinIn, FaHeart, FaArrowUp } from "react-icons/fa";
+import { FaGithub, FaLinkedinIn, FaHeart, FaArrowUp, FaWhatsapp } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { TbBrandFiverr } from "react-icons/tb";
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
 
 const Footer = () => {
@@ -33,14 +32,14 @@ const Footer = () => {
     },
     {
       icon: <FaXTwitter className="w-5 h-5" />,
-      name: "Twitter",
+      name: "X (Twitter)",
       url: "https://x.com/AbdulGaffa92758?t=EAPuF6wG2oKFPhJiUd3NyA&s=09",
       color: "hover:text-blue-400",
     },
     {
-      icon: <TbBrandFiverr className="w-5 h-5" />,
-      name: "Fiverr",
-      url: "https://www.fiverr.com/s/GzaVYy7",
+      icon: <FaWhatsapp className="w-5 h-5" />,
+      name: "WhatsApp",
+      url: "https://wa.me/923034895728",
       color: "hover:text-green-400",
     },
   ];
@@ -59,7 +58,7 @@ const Footer = () => {
     {
       icon: <MdLocationOn className="w-4 h-4" />,
       text: "Islamabad, Pakistan",
-      href: "#",
+      href: "https://www.google.com/maps/place/Islamabad,+Pakistan",
     },
   ];
 

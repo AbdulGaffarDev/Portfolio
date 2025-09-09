@@ -1,7 +1,6 @@
-import { FaGraduationCap, FaLightbulb, FaCode, FaRocket } from "react-icons/fa";
+import { FaGraduationCap, FaLightbulb, FaRocket } from "react-icons/fa";
 import AboutCard from "../ui/AboutCard";
 import { BsFillSuitcaseLgFill } from "react-icons/bs";
-import Button from "../ui/Button";
 import { FaDownload, FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 
 const aboutCardsData = [
@@ -34,19 +33,19 @@ const aboutCardsData = [
 const socialLinks = [
   {
     icon: <FaLinkedin className="w-5 h-5" />,
-    url: "https://www.linkedin.com/in/abdul-gaffar/",
+    url: "https://www.linkedin.com/in/abdul-gaffar-dev/",
     label: "LinkedIn",
     color: "hover:text-blue-600",
   },
   {
     icon: <FaGithub className="w-5 h-5" />,
-    url: "https://github.com/abdulgaffar",
+    url: "https://github.com/AbdulGaffarDev",
     label: "GitHub",
     color: "hover:text-gray-800 dark:hover:text-gray-200",
   },
   {
     icon: <FaEnvelope className="w-5 h-5" />,
-    url: "mailto:abdulgaffar@example.com",
+    url: "mailto:a.gaffar.dev@gmail.com?subject=Portfolio%20Inquiry&body=Hi%20Gaffar,%20I%20came%20across%20your%20portfolio%20and%20I%20would%20like%20to%20reach%20out%20to%20you%20for%20a%20potential%20opportunity.",
     label: "Email",
     color: "hover:text-red-500",
   },
@@ -54,14 +53,14 @@ const socialLinks = [
 
 const About = () => {
   return (
-    <section
-      id="about"
-      className="py-20 bg-main relative overflow-hidden"
-    >
+    <section id="about" className="py-20 bg-main relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-10 right-10 w-32 h-32 bg-primary/10 rounded-full animate-float"></div>
-      <div className="absolute bottom-10 left-10 w-24 h-24 bg-secondary/10 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
-      
+      <div
+        className="absolute bottom-10 left-10 w-24 h-24 bg-secondary/10 rounded-full animate-float"
+        style={{ animationDelay: "2s" }}
+      ></div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fadeInUp">
@@ -70,7 +69,8 @@ const About = () => {
           </h2>
           <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full mb-6"></div>
           <p className="text-lg text-muted max-w-2xl mx-auto">
-            Get to know more about my journey, experience, and passion for creating amazing web experiences.
+            Get to know more about my journey, experience, and passion for
+            creating amazing web experiences.
           </p>
         </div>
 
@@ -81,23 +81,27 @@ const About = () => {
               <h3 className="text-2xl font-bold text-primary">Who am I?</h3>
               <div className="space-y-4 text-muted leading-relaxed">
                 <p>
-                  I'm <span className="text-primary font-semibold">Abdul Gaffar</span>, a passionate 
-                  MERN Stack Developer with a solid foundation in full-stack web development. 
-                  While I primarily focus on React and MongoDB, I also work with Node.js and 
-                  Express.js to build responsive, user-friendly interfaces supported by robust 
+                  I'm{" "}
+                  <span className="text-primary font-semibold">
+                    Abdul Gaffar
+                  </span>
+                  , a passionate MERN Stack Developer with a solid foundation in
+                  full-stack web development. While I primarily focus on React
+                  and MongoDB, I also work with Node.js and Express.js to build
+                  responsive, user-friendly interfaces supported by robust
                   server-side logic.
                 </p>
                 <p>
-                  Although I'm early in my professional journey, I've already worked on
-                  a variety of personal and team projects that reflect my drive to learn
-                  and improve. I'm continuously exploring new technologies and best
-                  practices to enhance my skill set and contribute meaningfully to the
-                  development community.
+                  Although I'm early in my professional journey, I've already
+                  worked on a variety of personal and team projects that reflect
+                  my drive to learn and improve. I'm continuously exploring new
+                  technologies and best practices to enhance my skill set and
+                  contribute meaningfully to the development community.
                 </p>
                 <p>
-                  When I'm not coding, you can find me exploring new technologies, 
-                  contributing to open-source projects, or sharing knowledge with 
-                  fellow developers in the community.
+                  When I'm not coding, you can find me exploring new
+                  technologies, contributing to open-source projects, or sharing
+                  knowledge with fellow developers in the community.
                 </p>
               </div>
             </div>
@@ -117,16 +121,16 @@ const About = () => {
             {/* Social Links */}
             <div className="flex space-x-4 pt-4">
               {socialLinks.map((link, index) => (
-                <a
-                  key={index}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={link.label}
-                  className={`p-3 bg-card border border-base rounded-full text-muted transition-all duration-300 hover:scale-110 shadow-theme hover:shadow-theme-lg cursor-pointer ${link.color}`}
-                >
-                  {link.icon}
-                </a>
+                 <a
+                 key={index}
+                 href={link.url}
+                 target={link.url.startsWith("mailto:") ? "_self" : "_blank"} 
+                 rel={link.url.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                 aria-label={link.label}
+                 className={`p-3 bg-card border border-base rounded-full text-muted transition-all duration-300 hover:scale-110 shadow-theme hover:shadow-theme-lg cursor-pointer ${link.color}`}
+               >
+                 {link.icon}
+               </a>
               ))}
             </div>
           </div>
@@ -153,18 +157,20 @@ const About = () => {
         </div>
 
         {/* Stats Section */}
-        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 animate-fadeInUp">
+        <div className="mt-20 grid grid-cols-2 md:grid-cols-4  gap-8 animate-fadeInUp">
           {[
             { number: "1+", label: "Years Experience" },
-            { number: "20+", label: "Projects Completed" },
+            { number: "6+", label: "Projects Completed" },
             { number: "5+", label: "Technologies Mastered" },
-            { number: "100%", label: "Client Satisfaction" },
+            { number: "2+", label: "Industry Projects" },
           ].map((stat, index) => (
             <div
               key={index}
               className="text-center p-6 bg-card border border-base rounded-xl shadow-theme hover:shadow-theme-lg transition-all duration-300 hover:scale-105"
             >
-              <div className="text-3xl font-bold text-primary mb-2">{stat.number}</div>
+              <div className="text-3xl font-bold text-primary mb-2">
+                {stat.number}
+              </div>
               <div className="text-sm text-muted">{stat.label}</div>
             </div>
           ))}

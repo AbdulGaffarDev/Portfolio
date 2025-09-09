@@ -16,7 +16,7 @@ const Hero = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTextIndex((prevIndex) => (prevIndex + 1) % loopingTexts.length);
-    }, 8000); 
+    }, 3000); 
 
     return () => clearInterval(interval);
   }, []);
@@ -84,7 +84,7 @@ const Hero = () => {
             {/* Social Links */}
             <div className="flex space-x-4" style={{zIndex: 20, position: 'relative'}}>
               <a
-                href="https://github.com/abdulgaffar"
+                href="https://github.com/AbdulGaffarDev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-600 dark:hover:border-indigo-400 transition-all duration-300 hover:scale-110 shadow-lg cursor-pointer"
