@@ -1,5 +1,4 @@
-import { FaGithub, FaLinkedinIn, FaHeart, FaArrowUp, FaWhatsapp } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaGithub, FaLinkedinIn, FaHeart, FaArrowUp, FaWhatsapp, FaDiscord } from "react-icons/fa";
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
 
 const Footer = () => {
@@ -19,25 +18,25 @@ const Footer = () => {
 
   const socialLinks = [
     {
-      icon: <FaGithub className="w-5 h-5" />,
+      icon: <FaGithub className="w-5 h-5 hover:text-gray-800 dark:hover:text-gray-200" />,
       name: "GitHub",
       url: "https://github.com/AbdulGaffarDev",
       color: "hover:text-gray-300",
     },
     {
-      icon: <FaLinkedinIn className="w-5 h-5" />,
+      icon: <FaLinkedinIn className="w-5 h-5 hover:text-blue-400" />,
       name: "LinkedIn",
       url: "https://www.linkedin.com/in/abdul-gaffar-dev",
       color: "hover:text-blue-400",
     },
     {
-      icon: <FaXTwitter className="w-5 h-5" />,
-      name: "X (Twitter)",
-      url: "https://x.com/AbdulGaffa92758?t=EAPuF6wG2oKFPhJiUd3NyA&s=09",
-      color: "hover:text-blue-400",
+      icon: <FaDiscord className="w-5 h-5 hover:text-indigo-600" />,
+      name: "Discord",
+      url: "https://discord.com/users/1239690249265741946",
+      color: "hover:text-indigo-600",
     },
     {
-      icon: <FaWhatsapp className="w-5 h-5" />,
+      icon: <FaWhatsapp className="w-5 h-5 hover:text-green-400" />,
       name: "WhatsApp",
       url: "https://wa.me/923034895728",
       color: "hover:text-green-400",

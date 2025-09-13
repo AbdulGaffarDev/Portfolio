@@ -114,7 +114,7 @@ const technicalSkills = [
     title: "Figma",
     icon: <SiFigma />,
     color: "#F24E1E",
-    level: "Beginner",
+    level: "Intermediate",
   },
 ];
 

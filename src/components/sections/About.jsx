@@ -166,7 +166,7 @@ const About = () => {
           ].map((stat, index) => (
             <div
               key={index}
-              className="text-center p-6 bg-card border border-base rounded-xl shadow-theme hover:shadow-theme-lg transition-all duration-300 hover:scale-105"
+              className="text-center p-6 bg-card border cursor-pointer border-base rounded-xl shadow-theme hover:shadow-theme-lg transition-all duration-300 hover:scale-105"
             >
               <div className="text-3xl font-bold text-primary mb-2">
                 {stat.number}
