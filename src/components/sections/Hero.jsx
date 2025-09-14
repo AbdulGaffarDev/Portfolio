@@ -1,25 +1,22 @@
-import { useState, useEffect } from "react";
 import Button from "../ui/Button";
 import { FaCode, FaGithub, FaLinkedin, FaDownload } from "react-icons/fa";
 import { HiArrowDown } from "react-icons/hi";
+import useTypewriter from "../../hooks/useTypewriter";
 
-const loopingTexts = [
+const typewriterTexts = [
   "Frontend Developer",
   "Backend Developer", 
-  "Full Stack Developer",
+  "UI/UX Developer",
   "MERN Developer",
 ];
 
 const Hero = () => {
-  const [currentTextIndex, setCurrentTextIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTextIndex((prevIndex) => (prevIndex + 1) % loopingTexts.length);
-    }, 3000); 
-
-    return () => clearInterval(interval);
-  }, []);
+  const { currentText } = useTypewriter(typewriterTexts, {
+    typeSpeed: 30,
+    deleteSpeed: 15,
+    pauseTime: 600,
+    startDelay: 300
+  });
 
   const scrollToSection = (sectionId) => {
     const element = document.querySelector(sectionId);
@@ -51,11 +48,9 @@ const Hero = () => {
                 Abdul Gaffar
               </h1>
               <div className="text-2xl lg:text-3xl font-semibold min-h-[2.5rem] flex items-center" style={{zIndex: 20, position: 'relative'}}>
-                <span 
-                  key={currentTextIndex}
-                  className="looping-text"
-                >
-                  {loopingTexts[currentTextIndex]}
+                <span className="typewriter-text">
+                  {currentText}
+                  <span className="typewriter-cursor">|</span>
                 </span>
               </div>
             </div>
@@ -93,7 +88,7 @@ const Hero = () => {
                 <FaGithub className="w-5 h-5" />
               </a>
               <a
-                href="https://www.linkedin.com/in/abdul-gaffar/"
+                href="https://www.linkedin.com/in/abdul-gaffar-dev/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-600 dark:hover:border-indigo-400 transition-all duration-300 hover:scale-110 shadow-lg cursor-pointer"
