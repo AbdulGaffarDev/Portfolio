@@ -18,28 +18,28 @@ const Footer = () => {
 
   const socialLinks = [
     {
-      icon: <FaGithub className="w-5 h-5 hover:text-gray-800 dark:hover:text-gray-200" />,
+      icon: <FaGithub className="w-5 h-5 text-current hover:text-white" />,
       name: "GitHub",
       url: "https://github.com/AbdulGaffarDev",
-      color: "hover:text-gray-300",
+      color: "hover:bg-black",
     },
     {
-      icon: <FaLinkedinIn className="w-5 h-5 hover:text-blue-400" />,
+      icon: <FaLinkedinIn className="w-5 h-5 text-current hover:text-white" />,
       name: "LinkedIn",
       url: "https://www.linkedin.com/in/abdul-gaffar-dev",
-      color: "hover:text-blue-400",
+      color: "hover:bg-blue-400",
     },
     {
-      icon: <FaDiscord className="w-5 h-5 hover:text-indigo-600" />,
+      icon: <FaDiscord className="w-5 h-5 text-current hover:text-white" />,
       name: "Discord",
       url: "https://discord.com/users/1239690249265741946",
-      color: "hover:text-indigo-600",
+      color: "hover:bg-indigo-600",
     },
     {
-      icon: <FaWhatsapp className="w-5 h-5 hover:text-green-400" />,
+      icon: <FaWhatsapp className="w-5 h-5 text-current hover:text-white" />,
       name: "WhatsApp",
       url: "https://wa.me/923034895728",
-      color: "hover:text-green-400",
+      color: "hover:bg-green-400",
     },
   ];
 
@@ -81,7 +81,7 @@ const Footer = () => {
                 Abdul Gaffar
               </h3>
               <p className="text-secondary font-semibold mb-4">
-                Full Stack Developer
+                MERN Stack Developer
               </p>
               <p className="text-muted leading-relaxed max-w-md">
                 Passionate about creating elegant, user-friendly web applications with modern technologies. 
@@ -131,7 +131,7 @@ const Footer = () => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-3 bg-card border border-base rounded-full text-muted ${social.color} transition-all duration-300 hover:scale-110 shadow-theme hover:shadow-theme-lg cursor-pointer`}
+                  className={`p-3 border border-base rounded-full hover:text-white  ${social.color} transition-all duration-300 hover:scale-110 shadow-theme hover:shadow-theme-lg cursor-pointer`}
                   aria-label={social.name}
                 >
                   {social.icon}

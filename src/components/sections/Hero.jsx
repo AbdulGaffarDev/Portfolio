@@ -4,10 +4,10 @@ import { HiArrowDown } from "react-icons/hi";
 import useTypewriter from "../../hooks/useTypewriter";
 
 const typewriterTexts = [
+  "MERN Developer",
   "Frontend Developer",
   "Backend Developer", 
   "UI/UX Developer",
-  "MERN Developer",
 ];
 
 const Hero = () => {
@@ -118,7 +118,7 @@ const Hero = () => {
               <div className="relative z-10">
                 <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-white shadow-theme-lg">
         <img
-          src="/assets/profile.jpeg"
+          src="/assets/profile.jpg"
                     alt="Abdul Gaffar"
                     className="w-full h-full object-cover"
                   />

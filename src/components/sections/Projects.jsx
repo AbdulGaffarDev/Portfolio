@@ -6,7 +6,7 @@ const projects = [
     id: 1,
     title: "StaffVertex (Alphinex Solutions)",
     description: "A time tracking and team management tool. Worked as a React & Next.js frontend developer, also contributed to backend APIs. Built features for user dashboards, reports, and admin management.",
-    image: "/assets/project1.jpg",
+    image: "/assets/StaffVertex.png",
     technologies: [
       { name: "Next.js", icon: <SiNextdotjs />, color: "#000000" },
       { name: "React", icon: <FaReact />, color: "#61DAFB" },
@@ -17,14 +17,14 @@ const projects = [
       { name: "Node.js", icon: <FaNodeJs />, color: "#339933" },
     ],
     githubUrl: "",
-    liveUrl: "",
+    liveUrl: "https://staffvertex.com",
     featured: true,
   },
   {
     id: 2,
     title: "Timsync (Ongoing Project)",
     description: "A time tracking and productivity management tool built with Next.js, React, and Electron. Currently stores data locally, with future plans for team support and backend integration.",
-    image: "/assets/project2.jpg",
+    image: "",
     technologies: [
       { name: "Next.js", icon: <SiNextdotjs />, color: "#000000" },
       { name: "React", icon: <FaReact />, color: "#61DAFB" },
@@ -41,43 +41,43 @@ const projects = [
     id: 3,
     title: "Portfolio Website",
     description: "A responsive personal portfolio website built with React and TailwindCSS, showcasing my projects, skills, and resume. Implemented Redux for state management and theme management (light/dark mode).",
-    image: "/assets/project3.jpg",
+    image: "/assets/Portfolio.png",
     technologies: [
       { name: "React", icon: <FaReact />, color: "#61DAFB" },
       { name: "TailwindCSS", icon: <SiTailwindcss />, color: "#06B6D4" },
       { name: "Redux", icon: <SiRedux />, color: "#764ABC" },
     ],
-    githubUrl: "https://github.com/abdulgaffar/portfolio",
-    liveUrl: "https://abdulgaffar.dev",
+    githubUrl: "https://github.com/AbdulGaffarDev/portfolio",
+    liveUrl: "https://abdulgaffar.dev.io",
     featured: true,
   },
   {
     id: 4,
     title: "GitHub User Finder",
     description: "A React-based app to search GitHub users and display their profile details, repositories, and activity using GitHub API.",
-    image: "/assets/project4.jpg",
+    image: "/assets/Github-User-Finder.png",
     technologies: [
       { name: "React", icon: <FaReact />, color: "#61DAFB" },
       { name: "TailwindCSS", icon: <SiTailwindcss />, color: "#06B6D4" },
       { name: "API", icon: <FaGithub />, color: "#181717" },
     ],
-    githubUrl: "https://github.com/abdulgaffar/github-user-finder",
-    liveUrl: "https://github-finder-demo.netlify.app",
+    githubUrl: "https://github.com/AbdulGaffarDev/github-user-finder",
+    liveUrl: "https://abdulgaffardev.github.io/Github-User-Finder/",
     featured: false,
   },
   {
     id: 5,
     title: "Library Management System",
     description: "A JavaScript-based library management system with admin and user sides. Stores records in browser localStorage for managing books, issuing, and returning.",
-    image: "/assets/project5.jpg",
+    image: "/assets/LibraryManagmentSystem.png",
     technologies: [
       { name: "JavaScript", icon: <FaJs />, color: "#F7DF1E" },
       { name: "HTML", icon: <FaHtml5 />, color: "#E34F26" },
       { name: "CSS", icon: <FaCss3 />, color: "#1572B6" },
       { name: "LocalStorage", icon: <FaChrome />, color: "#4285F4" },
     ],
-    githubUrl: "https://github.com/abdulgaffar/library-management",
-    liveUrl: "https://library-demo.netlify.app",
+    githubUrl: "https://github.com/AbdulGaffarDev/Library-managment-system",
+    liveUrl: "",
     featured: false,
   },
 ];
@@ -91,30 +91,58 @@ const ProjectCard = ({ project, index }) => {
     >
       {/* Project Image */}
       <div className="relative overflow-hidden">
-        <div className="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-          <div className="text-6xl text-primary/50">
-            <FaDatabase />
+        {project.image ? (
+          <img 
+            src={project.image} 
+            alt={project.title}
+            className="w-full h-full object-cover aspect-video"
+          />
+        ) : (
+          <div className="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+            <div className="text-6xl text-primary/50">
+              <FaDatabase />
+            </div>
           </div>
-        </div>
+        )}
         <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors duration-300"
-            aria-label="View GitHub repository"
-          >
-            <FaGithub className="w-5 h-5" />
-          </a>
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors duration-300"
-            aria-label="View live project"
-          >
-            <FaExternalLinkAlt className="w-5 h-5" />
-          </a>
+          <div className="relative group/button">
+            <div
+              className={`p-3 backdrop-blur-sm rounded-full transition-colors duration-300 ${
+                project.githubUrl 
+                  ? "bg-white/20 text-white hover:bg-white/30 cursor-pointer" 
+                  : "bg-white/20 text-white hover:bg-gray-500/20 hover:text-gray-400 cursor-not-allowed"
+              }`}
+              aria-label={project.githubUrl ? "View GitHub repository" : "GitHub repository not available"}
+              onClick={project.githubUrl ? () => window.open(project.githubUrl, '_blank') : (e) => e.preventDefault()}
+            >
+              <FaGithub className="w-5 h-5" />
+            </div>
+            {!project.githubUrl && (
+              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 text-xs rounded opacity-0 group-hover/button:opacity-100 transition-opacity duration-200 whitespace-nowrap z-10" style={{backgroundColor: 'var(--color-text-primary)', color: 'var(--color-bg-primary)'}}>
+                Link not available
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-2 border-r-2 border-t-2 border-transparent" style={{borderTopColor: 'var(--color-text-primary)'}}></div>
+              </div>
+            )}
+          </div>
+          <div className="relative group/button">
+            <div
+              className={`p-3 backdrop-blur-sm rounded-full transition-colors duration-300 ${
+                project.liveUrl 
+                  ? "bg-white/20 text-white hover:bg-white/30 cursor-pointer" 
+                  : "bg-white/20 text-white hover:bg-gray-500/20 hover:text-gray-400 cursor-not-allowed"
+              }`}
+              aria-label={project.liveUrl ? "View live project" : "Live project not available"}
+              onClick={project.liveUrl ? () => window.open(project.liveUrl, '_blank') : (e) => e.preventDefault()}
+            >
+              <FaExternalLinkAlt className="w-5 h-5" />
+            </div>
+            {!project.liveUrl && (
+              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 text-xs rounded opacity-0 group-hover/button:opacity-100 transition-opacity duration-200 whitespace-nowrap z-10" style={{backgroundColor: 'var(--color-text-primary)', color: 'var(--color-bg-primary)'}}>
+                Link not available
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-2 border-r-2 border-t-2 border-transparent" style={{borderTopColor: 'var(--color-text-primary)'}}></div>
+              </div>
+            )}
+          </div>
         </div>
         {project.featured && (
           <div className="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-xs font-semibold">
@@ -147,24 +175,44 @@ const ProjectCard = ({ project, index }) => {
 
         {/* Action Buttons */}
         <div className="flex space-x-3">
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center space-x-2 bg-indigo-100 text-indigo-600 hover:bg-gradient-primary hover:text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 cursor-pointer"
-          >
-            <FaGithub className="w-4 h-4" />
-            <span>Code</span>
-          </a>
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center space-x-2 border border-indigo-600 text-indigo-600 hover:bg-gradient-primary hover:text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 cursor-pointer"
-          >
-            <FaExternalLinkAlt className="w-4 h-4" />
-            <span>Live</span>
-          </a>
+          <div className="relative group/button flex-1">
+            <div
+              className={`flex items-center justify-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                project.githubUrl 
+                  ? "bg-indigo-100 text-indigo-600 hover:bg-gradient-primary hover:text-white cursor-pointer" 
+                  : "bg-indigo-100 text-indigo-600 hover:bg-gray-100 hover:text-gray-400 cursor-not-allowed"
+              }`}
+              onClick={project.githubUrl ? () => window.open(project.githubUrl, '_blank') : (e) => e.preventDefault()}
+            >
+              <FaGithub className="w-4 h-4" />
+              <span>Code</span>
+            </div>
+            {!project.githubUrl && (
+              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 text-xs rounded opacity-0 group-hover/button:opacity-100 transition-opacity duration-200 whitespace-nowrap z-10" style={{backgroundColor: 'var(--color-text-primary)', color: 'var(--color-bg-primary)'}}>
+                Link not available
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-2 border-r-2 border-t-2 border-transparent" style={{borderTopColor: 'var(--color-text-primary)'}}></div>
+              </div>
+            )}
+          </div>
+          <div className="relative group/button flex-1">
+            <div
+              className={`flex items-center justify-center space-x-2 border px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                project.liveUrl 
+                  ? "border-indigo-600 text-indigo-600 hover:bg-gradient-primary hover:text-white cursor-pointer" 
+                  : "border-indigo-600 text-indigo-600 hover:border-gray-300 hover:text-gray-400 cursor-not-allowed"
+              }`}
+              onClick={project.liveUrl ? () => window.open(project.liveUrl, '_blank') : (e) => e.preventDefault()}
+            >
+              <FaExternalLinkAlt className="w-4 h-4" />
+              <span>Live</span>
+            </div>
+            {!project.liveUrl && (
+              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 text-xs rounded opacity-0 group-hover/button:opacity-100 transition-opacity duration-200 whitespace-nowrap z-10" style={{backgroundColor: 'var(--color-text-primary)', color: 'var(--color-bg-primary)'}}>
+                Link not available
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-2 border-r-2 border-t-2 border-transparent" style={{borderTopColor: 'var(--color-text-primary)'}}></div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -238,7 +286,7 @@ const Projects = () => {
                 Get In Touch
               </a>
               <a
-                href="https://github.com/abdulgaffar"
+                href="https://github.com/AbdulGaffarDev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="border-2 border-indigo-600 text-indigo-600 hover:bg-gradient-primary hover:text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 cursor-pointer"

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import {
   MdEmail,
   MdPhone,
@@ -11,7 +12,6 @@ import {
   FaWhatsapp,
   FaDiscord,
 } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -20,6 +20,8 @@ const Contact = () => {
     subject: "",
     message: "",
   });
+  const [sending, setSending] = useState(false);
+  const [resultMsg, setResultMsg] = useState("");
 
   const handleInputChange = (e) => {
     setFormData({
@@ -30,10 +32,35 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    // Reset form
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setSending(true);
+    setResultMsg("");
+
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+    };
+    emailjs
+      .send(
+        process.env.EMAILJS_SERVICE_ID,
+        process.env.EMAILJS_TEMPLATE_ID,
+        templateParams,
+        process.env.EMAILJS_PUBLIC_KEY
+      )
+      .then(
+        (response) => {
+          setSending(false);
+          setResultMsg("Message sent — thanks!");
+          setFormData({ name: "", email: "", subject: "", message: "" });
+          console.log("EmailJS success", response.status, response.text);
+        },
+        (error) => {
+          setSending(false);
+          setResultMsg("Failed to send message. Please try again later.");
+          console.error("EmailJS error:", error);
+        }
+      );
   };
 
   const contactInfo = [
@@ -74,13 +101,6 @@ const Contact = () => {
       url: "https://github.com/AbdulGaffarDev",
       color: "hover:text-gray-800 dark:hover:text-gray-200",
       bgColor: "bg-gray-100 dark:bg-gray-800",
-    },
-    {
-      icon: <FaXTwitter className="w-5 h-5" />,
-      name: "X (Twitter)",
-      url: "https://x.com/AbdulGaffa92758",
-      color: "hover:text-blue-400",
-      bgColor: "bg-blue-100 dark:bg-blue-900/20",
     },
     {
       icon: <FaWhatsapp className="w-5 h-5" />,
@@ -183,11 +203,15 @@ const Contact = () => {
                 </div>
             <button
               type="submit"
-                  className="w-full bg-gradient-primary text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 cursor-pointer"
+              disabled={sending}
+              className="w-full bg-gradient-primary text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 cursor-pointer disabled:opacity-60"
             >
-                  <MdSend className="w-5 h-5" />
-                  <span>Send Message</span>
+              <MdSend className="w-5 h-5" />
+              <span>{sending ? "Sending..." : "Send Message"}</span>
             </button>
+            {resultMsg && (
+              <p className="mt-3 text-sm text-primary">{resultMsg}</p>
+            )}
           </form>
             </div>
         </div>
