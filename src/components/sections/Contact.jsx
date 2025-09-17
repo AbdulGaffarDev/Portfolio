@@ -12,6 +12,7 @@ import {
   FaWhatsapp,
   FaDiscord,
 } from "react-icons/fa";
+import { useToast } from "../../contexts/ToastContext";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -21,7 +22,7 @@ const Contact = () => {
     message: "",
   });
   const [sending, setSending] = useState(false);
-  const [resultMsg, setResultMsg] = useState("");
+  const { showSuccess, showError } = useToast();
 
   const handleInputChange = (e) => {
     setFormData({
@@ -33,7 +34,6 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSending(true);
-    setResultMsg("");
 
     const templateParams = {
       from_name: formData.name,
@@ -43,21 +43,21 @@ const Contact = () => {
     };
     emailjs
       .send(
-        process.env.EMAILJS_SERVICE_ID,
-        process.env.EMAILJS_TEMPLATE_ID,
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         templateParams,
-        process.env.EMAILJS_PUBLIC_KEY
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
       .then(
         (response) => {
           setSending(false);
-          setResultMsg("Message sent — thanks!");
+          showSuccess("Form was submitted successfully! I will contact you back as soon as possible.");
           setFormData({ name: "", email: "", subject: "", message: "" });
           console.log("EmailJS success", response.status, response.text);
         },
         (error) => {
           setSending(false);
-          setResultMsg("Failed to send message. Please try again later.");
+          showError("Failed to send message. Please try again later or contact me directly.");
           console.error("EmailJS error:", error);
         }
       );
@@ -209,9 +209,6 @@ const Contact = () => {
               <MdSend className="w-5 h-5" />
               <span>{sending ? "Sending..." : "Send Message"}</span>
             </button>
-            {resultMsg && (
-              <p className="mt-3 text-sm text-primary">{resultMsg}</p>
-            )}
           </form>
             </div>
         </div>

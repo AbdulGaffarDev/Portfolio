@@ -6,6 +6,7 @@ import About from "./components/sections/About";
 import Skills from "./components/sections/Skills";
 import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
+import { ToastProvider } from "./contexts/ToastContext";
 
 function App() {
   useEffect(() => {
@@ -48,17 +49,19 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-main text-primary transition-colors duration-300">
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <ToastProvider>
+      <div className="min-h-screen bg-main text-primary transition-colors duration-300">
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </ToastProvider>
   );
 }
 
