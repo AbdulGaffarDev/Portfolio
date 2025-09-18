@@ -48,7 +48,7 @@ const projects = [
       { name: "Redux", icon: <SiRedux />, color: "#764ABC" },
     ],
     githubUrl: "https://github.com/AbdulGaffarDev/portfolio",
-    liveUrl: "https://abdulgaffar.dev.io",
+    liveUrl: "https://abdul-gaffar.vercel.app/",
     featured: true,
   },
   {
