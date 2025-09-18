@@ -24,7 +24,7 @@ const projects = [
     id: 2,
     title: "Timsync (Ongoing Project)",
     description: "A time tracking and productivity management tool built with Next.js, React, and Electron. Currently stores data locally, with future plans for team support and backend integration.",
-    image: "",
+    image: "assets/Timsync.png",
     technologies: [
       { name: "Next.js", icon: <SiNextdotjs />, color: "#000000" },
       { name: "React", icon: <FaReact />, color: "#61DAFB" },
