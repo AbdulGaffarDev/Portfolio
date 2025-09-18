@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import {
   MdEmail,
@@ -15,31 +16,26 @@ import {
 import { useToast } from "../../contexts/ToastContext";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
   const [sending, setSending] = useState(false);
   const { showSuccess, showError } = useToast();
 
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    mode: "onBlur", 
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = (data) => {
     setSending(true);
 
     const templateParams = {
-      from_name: formData.name,
-      from_email: formData.email,
-      subject: formData.subject,
-      message: formData.message,
+      from_name: data.name,
+      from_email: data.email,
+      subject: data.subject,
+      message: data.message,
     };
     emailjs
       .send(
@@ -52,8 +48,7 @@ const Contact = () => {
         (response) => {
           setSending(false);
           showSuccess("Form was submitted successfully! I will contact you back as soon as possible.");
-          setFormData({ name: "", email: "", subject: "", message: "" });
-          console.log("EmailJS success", response.status, response.text);
+          reset(); // Reset form after successful submission
         },
         (error) => {
           setSending(false);
@@ -138,37 +133,57 @@ const Contact = () => {
           <div className="animate-fadeInLeft">
             <div className="bg-card border border-base rounded-2xl p-8 shadow-theme-lg">
               <h3 className="text-2xl font-bold text-primary mb-6">Send me a message</h3>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-primary mb-2">
                       Name
                     </label>
-            <input
-              type="text"
+                    <input
+                      type="text"
                       id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 bg-main border border-base rounded-lg text-primary placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
-              placeholder="Your name"
-            />
+                      {...register("name", {
+                        required: "Name is required",
+                        minLength: {
+                          value: 2,
+                          message: "Name must be at least 2 characters"
+                        },
+                        maxLength: {
+                          value: 50,
+                          message: "Name must be less than 50 characters"
+                        }
+                      })}
+                      className={`w-full px-4 py-3 bg-main border rounded-lg text-primary placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 ${
+                        errors.name ? "border-red-500" : "border-base"
+                      }`}
+                      placeholder="Your name"
+                    />
+                    {errors.name && (
+                      <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>
+                    )}
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-primary mb-2">
                       Email
                     </label>
-            <input
-              type="email"
+                    <input
+                      type="email"
                       id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 bg-main border border-base rounded-lg text-primary placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+                      {...register("email", {
+                        required: "Email is required",
+                        pattern: {
+                          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                          message: "Please enter a valid email address"
+                        }
+                      })}
+                      className={`w-full px-4 py-3 bg-main border rounded-lg text-primary placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 ${
+                        errors.email ? "border-red-500" : "border-base"
+                      }`}
                       placeholder="your.email@example.com"
                     />
+                    {errors.email && (
+                      <p className="mt-1 text-sm text-red-500">{errors.email.message}</p>
+                    )}
                   </div>
                 </div>
                 <div>
@@ -178,28 +193,52 @@ const Contact = () => {
                   <input
                     type="text"
                     id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 bg-main border border-base rounded-lg text-primary placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+                    {...register("subject", {
+                      required: "Subject is required",
+                      minLength: {
+                        value: 5,
+                        message: "Subject must be at least 5 characters"
+                      },
+                      maxLength: {
+                        value: 100,
+                        message: "Subject must be less than 100 characters"
+                      }
+                    })}
+                    className={`w-full px-4 py-3 bg-main border rounded-lg text-primary placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 ${
+                      errors.subject ? "border-red-500" : "border-base"
+                    }`}
                     placeholder="What's this about?"
                   />
+                  {errors.subject && (
+                    <p className="mt-1 text-sm text-red-500">{errors.subject.message}</p>
+                  )}
                 </div>
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-primary mb-2">
                     Message
                   </label>
-            <textarea
+                  <textarea
                     id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    required
+                    {...register("message", {
+                      required: "Message is required",
+                      minLength: {
+                        value: 10,
+                        message: "Message must be at least 10 characters"
+                      },
+                      maxLength: {
+                        value: 1000,
+                        message: "Message must be less than 1000 characters"
+                      }
+                    })}
                     rows={6}
-                    className="w-full px-4 py-3 bg-main border border-base rounded-lg text-primary placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none"
+                    className={`w-full px-4 py-3 bg-main border rounded-lg text-primary placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none ${
+                      errors.message ? "border-red-500" : "border-base"
+                    }`}
                     placeholder="Tell me about your project..."
                   />
+                  {errors.message && (
+                    <p className="mt-1 text-sm text-red-500">{errors.message.message}</p>
+                  )}
                 </div>
             <button
               type="submit"
