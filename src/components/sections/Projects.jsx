@@ -17,7 +17,7 @@ const projects = [
       { name: "Node.js", icon: <FaNodeJs />, color: "#339933" },
     ],
     githubUrl: "",
-    liveUrl: "https://staffvertex.com",
+    liveUrl: "",
     featured: true,
   },
   {
