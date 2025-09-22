@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { FaHome, FaArrowLeft } from 'react-icons/fa';
 import SEOHead from '../seo/SEOHead';
 
@@ -35,13 +34,13 @@ const NotFound = () => {
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/"
+            <button
+              onClick={() => window.location.href = '/'}
               className="inline-flex items-center gap-2 bg-gradient-primary text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
             >
               <FaHome className="w-4 h-4" />
               Go Home
-            </Link>
+            </button>
             <button
               onClick={() => window.history.back()}
               className="inline-flex items-center gap-2 border-2 border-indigo-600 text-indigo-600 hover:bg-gradient-primary hover:text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105"
@@ -55,18 +54,30 @@ const NotFound = () => {
           <div className="mt-12 pt-8 border-t border-base">
             <p className="text-muted mb-4">Quick Navigation:</p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Link to="/#about" className="text-primary hover:text-secondary transition-colors">
+              <button 
+                onClick={() => window.location.href = '/#about'} 
+                className="text-primary hover:text-secondary transition-colors"
+              >
                 About Me
-              </Link>
-              <Link to="/#projects" className="text-primary hover:text-secondary transition-colors">
+              </button>
+              <button 
+                onClick={() => window.location.href = '/#projects'} 
+                className="text-primary hover:text-secondary transition-colors"
+              >
                 Projects
-              </Link>
-              <Link to="/#skills" className="text-primary hover:text-secondary transition-colors">
+              </button>
+              <button 
+                onClick={() => window.location.href = '/#skills'} 
+                className="text-primary hover:text-secondary transition-colors"
+              >
                 Skills
-              </Link>
-              <Link to="/#contact" className="text-primary hover:text-secondary transition-colors">
+              </button>
+              <button 
+                onClick={() => window.location.href = '/#contact'} 
+                className="text-primary hover:text-secondary transition-colors"
+              >
                 Contact
-              </Link>
+              </button>
             </div>
           </div>
         </div>

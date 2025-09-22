@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { HelmetProvider } from "react-helmet-async";
 import Hero from "./components/sections/Hero";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
@@ -52,27 +51,25 @@ function App() {
   }, []);
 
   return (
-    <HelmetProvider>
-      <ToastProvider>
-        <SEOHead 
-          title="Abdul Gaffar - MERN Stack Developer Portfolio"
-          description="Portfolio of Abdul Gaffar, a passionate MERN Stack Developer specializing in React, Node.js, MongoDB, and Express.js. View my projects, skills, and experience."
-          keywords="MERN Stack Developer, React Developer, Node.js Developer, MongoDB Developer, Full Stack Developer, Web Developer, JavaScript Developer, Portfolio, Abdul Gaffar"
-          structuredData={[personSchema, websiteSchema, organizationSchema]}
-        />
-        <div className="min-h-screen bg-main text-primary transition-colors duration-300">
-          <Navbar />
-          <main>
-            <Hero />
-            <About />
-            <Skills />
-            <Projects />
-            <Contact />
-          </main>
-          <Footer />
-        </div>
-      </ToastProvider>
-    </HelmetProvider>
+    <ToastProvider>
+      <SEOHead 
+        title="Abdul Gaffar - MERN Stack Developer Portfolio"
+        description="Portfolio of Abdul Gaffar, a passionate MERN Stack Developer specializing in React, Node.js, MongoDB, and Express.js. View my projects, skills, and experience."
+        keywords="MERN Stack Developer, React Developer, Node.js Developer, MongoDB Developer, Full Stack Developer, Web Developer, JavaScript Developer, Portfolio, Abdul Gaffar"
+        structuredData={[personSchema, websiteSchema, organizationSchema]}
+      />
+      <div className="min-h-screen bg-main text-primary transition-colors duration-300">
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </ToastProvider>
   );
 }
 

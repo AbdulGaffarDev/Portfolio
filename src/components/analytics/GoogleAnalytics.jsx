@@ -1,11 +1,16 @@
 import { useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
 
 // Replace with your actual Google Analytics ID
-const GA_TRACKING_ID = import.meta.env.VITE_GA_TRACKING_ID; 
+const GA_TRACKING_ID = 'G-XXXXXXXXXX'; // Replace with your GA4 measurement ID
 
 const GoogleAnalytics = () => {
   useEffect(() => {
+    // Check if GA_TRACKING_ID is set
+    if (GA_TRACKING_ID === 'G-XXXXXXXXXX') {
+      console.log('Google Analytics not configured. Please set your GA_TRACKING_ID.');
+      return;
+    }
+
     // Load Google Analytics script
     const script = document.createElement('script');
     script.async = true;
@@ -33,25 +38,8 @@ const GoogleAnalytics = () => {
     };
   }, []);
 
-  return (
-    <Helmet>
-      <script
-        async
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-      />
-      <script>
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${GA_TRACKING_ID}', {
-            page_title: document.title,
-            page_location: window.location.href,
-          });
-        `}
-      </script>
-    </Helmet>
-  );
+  // This component doesn't render anything visible
+  return null;
 };
 
 // Helper function to track page views
