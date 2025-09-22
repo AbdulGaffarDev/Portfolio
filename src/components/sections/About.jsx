@@ -53,7 +53,12 @@ const socialLinks = [
 
 const About = () => {
   return (
-    <section id="about" className="py-20 bg-main relative overflow-hidden">
+    <section 
+      id="about" 
+      className="py-20 bg-main relative overflow-hidden"
+      role="region"
+      aria-label="About section with professional information"
+    >
       {/* Background Elements */}
       <div className="absolute top-10 right-10 w-32 h-32 bg-primary/10 rounded-full animate-float"></div>
       <div

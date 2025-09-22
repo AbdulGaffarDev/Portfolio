@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { HelmetProvider } from "react-helmet-async";
 import Hero from "./components/sections/Hero";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
@@ -7,6 +8,8 @@ import Skills from "./components/sections/Skills";
 import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
 import { ToastProvider } from "./contexts/ToastContext";
+import SEOHead from "./components/seo/SEOHead";
+import { personSchema, websiteSchema, organizationSchema } from "./components/seo/StructuredData";
 
 function App() {
   useEffect(() => {
@@ -49,19 +52,27 @@ function App() {
   }, []);
 
   return (
-    <ToastProvider>
-      <div className="min-h-screen bg-main text-primary transition-colors duration-300">
-        <Navbar />
-        <main>
-          <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
-    </ToastProvider>
+    <HelmetProvider>
+      <ToastProvider>
+        <SEOHead 
+          title="Abdul Gaffar - MERN Stack Developer Portfolio"
+          description="Portfolio of Abdul Gaffar, a passionate MERN Stack Developer specializing in React, Node.js, MongoDB, and Express.js. View my projects, skills, and experience."
+          keywords="MERN Stack Developer, React Developer, Node.js Developer, MongoDB Developer, Full Stack Developer, Web Developer, JavaScript Developer, Portfolio, Abdul Gaffar"
+          structuredData={[personSchema, websiteSchema, organizationSchema]}
+        />
+        <div className="min-h-screen bg-main text-primary transition-colors duration-300">
+          <Navbar />
+          <main>
+            <Hero />
+            <About />
+            <Skills />
+            <Projects />
+            <Contact />
+          </main>
+          <Footer />
+        </div>
+      </ToastProvider>
+    </HelmetProvider>
   );
 }
 

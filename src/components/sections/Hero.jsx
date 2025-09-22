@@ -29,6 +29,8 @@ const Hero = () => {
     <section
       id="home"
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      role="banner"
+      aria-label="Hero section with introduction"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 bg-main z-0"></div>
@@ -119,9 +121,10 @@ const Hero = () => {
                 <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-white shadow-theme-lg">
         <img
           src="/assets/profile.jpg"
-                    alt="Abdul Gaffar"
-                    className="w-full h-full object-cover"
-                  />
+          alt="Abdul Gaffar - MERN Stack Developer and Software Engineer professional headshot"
+          title="Abdul Gaffar - Professional MERN Stack Developer"
+          className="w-full h-full object-cover"
+        />
                 </div>
                 
                 {/* Floating Code Icon */}

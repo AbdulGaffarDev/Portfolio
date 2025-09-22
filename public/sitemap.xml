@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://abdul-gaffar.vercel.app/</loc>
+    <lastmod>2024-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://abdul-gaffar.vercel.app/assets/profile.jpg</image:loc>
+      <image:title>Abdul Gaffar - MERN Stack Developer</image:title>
+      <image:caption>Professional headshot of Abdul Gaffar, MERN Stack Developer</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- About Section -->
+  <url>
+    <loc>https://abdul-gaffar.vercel.app/#about</loc>
+    <lastmod>2024-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Projects Section -->
+  <url>
+    <loc>https://abdul-gaffar.vercel.app/#projects</loc>
+    <lastmod>2024-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Skills Section -->
+  <url>
+    <loc>https://abdul-gaffar.vercel.app/#skills</loc>
+    <lastmod>2024-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Contact Section -->
+  <url>
+    <loc>https://abdul-gaffar.vercel.app/#contact</loc>
+    <lastmod>2024-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Resume -->
+  <url>
+    <loc>https://abdul-gaffar.vercel.app/assets/Abdul_Gaffar_Resume.pdf</loc>
+    <lastmod>2024-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Project Images -->
+  <url>
+    <loc>https://abdul-gaffar.vercel.app/assets/Portfolio.png</loc>
+    <lastmod>2024-09-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://abdul-gaffar.vercel.app/assets/Portfolio.png</image:loc>
+      <image:title>Portfolio Website Project</image:title>
+      <image:caption>Screenshot of the portfolio website project built with React and TailwindCSS</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://abdul-gaffar.vercel.app/assets/Github-User-Finder.png</loc>
+    <lastmod>2024-09-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://abdul-gaffar.vercel.app/assets/Github-User-Finder.png</image:loc>
+      <image:title>GitHub User Finder Project</image:title>
+      <image:caption>Screenshot of the GitHub User Finder application built with React</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://abdul-gaffar.vercel.app/assets/LibraryManagmentSystem.png</loc>
+    <lastmod>2024-09-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://abdul-gaffar.vercel.app/assets/LibraryManagmentSystem.png</image:loc>
+      <image:title>Library Management System Project</image:title>
+      <image:caption>Screenshot of the Library Management System built with JavaScript</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://abdul-gaffar.vercel.app/assets/Timsync.png</loc>
+    <lastmod>2024-09-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://abdul-gaffar.vercel.app/assets/Timsync.png</image:loc>
+      <image:title>Timsync Project</image:title>
+      <image:caption>Screenshot of the Timsync time tracking application built with Next.js and Electron</image:caption>
+    </image:image>
+  </url>
+  
+</urlset>

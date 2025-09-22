@@ -117,8 +117,10 @@ const ProjectCard = ({ project, index }) => {
         {project.image ? (
           <img
             src={project.image}
-            alt={project.title}
+            alt={`${project.title} - ${project.description.substring(0, 100)}...`}
+            title={`${project.title} - MERN Stack Development Project`}
             className="w-full h-full object-cover aspect-video"
+            loading="lazy"
           />
         ) : (
           <div className="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
@@ -307,7 +309,12 @@ const Projects = () => {
   const otherProjects = projects.filter((project) => !project.featured);
 
   return (
-    <section id="projects" className="py-20 bg-main relative overflow-hidden">
+    <section 
+      id="projects" 
+      className="py-20 bg-main relative overflow-hidden"
+      role="region"
+      aria-label="Projects portfolio section"
+    >
       {/* Background Elements */}
       <div className="absolute top-20 right-20 w-32 h-32 bg-primary/10 rounded-full animate-float"></div>
       <div
